@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Editar Contato";
+}
+
+
+<div class="container-fluid px-5">
+    <h1 class="display-5 text-center">Editar Novo Contato</h1>
+
+    <form>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" placeholder="Digite seu nome">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail">
+        </div>
+        <div class="mb-3">
+            <label for="celular" class="form-label">Celular</label>
+            <input type="text" class="form-control" id="celular" placeholder="Digite seu celular">
+        </div>
+        <div class="my-4">
+            <button type="submit" class="btn btn-primary btn-block my-2 ">Alterar</button>
+            <a class="btn btn-success text-light btn-block my-2" role="button" asp-controller="Contato" asp-action="Index">Lista de contatos</a>
+        </div>
+    </form>
+
+</div>

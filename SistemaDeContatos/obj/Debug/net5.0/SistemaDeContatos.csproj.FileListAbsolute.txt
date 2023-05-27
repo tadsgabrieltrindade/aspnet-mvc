@@ -359,3 +359,7 @@ C:\Users\icand\Documents\Projetos\ASPNET MVC\SistemaDeContatos\SistemaDeContatos
 C:\Users\icand\Documents\Projetos\ASPNET MVC\SistemaDeContatos\SistemaDeContatos\obj\Debug\net5.0\SistemaDeContatos.pdb
 C:\Users\icand\Documents\Projetos\ASPNET MVC\SistemaDeContatos\SistemaDeContatos\obj\Debug\net5.0\SistemaDeContatos.genruntimeconfig.cache
 C:\Users\icand\Documents\Projetos\ASPNET MVC\SistemaDeContatos\SistemaDeContatos\obj\Debug\net5.0\ref\SistemaDeContatos.dll
+C:\Users\icand\Documents\Projetos\ASPNET MVC\SistemaDeContatos\SistemaDeContatos\obj\Debug\net5.0\Razor\Views\Contato\Index.cshtml.g.cs
+C:\Users\icand\Documents\Projetos\ASPNET MVC\SistemaDeContatos\SistemaDeContatos\obj\Debug\net5.0\Razor\Views\Contato\Criar.cshtml.g.cs
+C:\Users\icand\Documents\Projetos\ASPNET MVC\SistemaDeContatos\SistemaDeContatos\obj\Debug\net5.0\Razor\Views\Contato\Editar.cshtml.g.cs
+C:\Users\icand\Documents\Projetos\ASPNET MVC\SistemaDeContatos\SistemaDeContatos\obj\Debug\net5.0\Razor\Views\Contato\ApagarConfirmacao.cshtml.g.cs
