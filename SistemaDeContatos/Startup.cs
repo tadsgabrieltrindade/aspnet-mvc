@@ -1,8 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SistemaDeContatos.Data;
+using SistemaDeContatos.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +26,11 @@ namespace SistemaDeContatos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            // Configuração do Entity Framework SQL Server:
+            // Adiciona o provedor do SQL Server ao serviço de Entity Framework.
+            // Em seguida, configura o contexto do banco de dados para usar o BancoContext.
+            services.AddEntityFrameworkSqlServer().AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
+            services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
