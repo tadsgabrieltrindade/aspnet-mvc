@@ -3,7 +3,7 @@
     ViewData["Title"] = "Cadastrar Contato";
 }
 
-
+ 
 <div class="container-fluid px-5">
     <h1 class="display-5 text-center">Cadastrar Novo Contato</h1>
 
@@ -11,16 +11,22 @@
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
             <input type="text" asp-for=nome class="form-control" id="nome" placeholder="Digite seu nome">
+            @*Esse validationMessageFor é responsável por mostra as mensagens que foram definidas na model de contatos para a validação*@
+            @Html.ValidationMessageFor(x => x.nome)
         </div>
 
         <div class="mb-3">
             <label for="email" class="form-label">E-mail</label>
             <input type="email" asp-for=email class="form-control" id="email" placeholder="Digite seu e-mail">
+            @*Esse validationMessageFor é responsável por mostra as mensagens que foram definidas na model de contatos para a validação*@
+            @Html.ValidationMessageFor(x => x.email)
         </div>
 
         <div class="mb-3">
             <label for="celular" class="form-label">Celular</label>
             <input type="text" asp-for=celular class="form-control" id="celular" placeholder="Digite seu celular">
+            @*Esse validationMessageFor é responsável por mostra as mensagens que foram definidas na model de contatos para a validação*@
+            @Html.ValidationMessageFor(x => x.celular)
         </div>
 
         <div class="my-4">

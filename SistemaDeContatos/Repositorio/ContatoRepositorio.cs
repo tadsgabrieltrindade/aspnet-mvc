@@ -28,6 +28,8 @@ namespace SistemaDeContatos.Repositorio
         {
 
             ContatoModel contato = _bancoContext.Contatos.Single(x => x.id == id);
+            if (contato == null) throw new System.Exception("Houve um erro ao apagar contato!");
+
             _bancoContext.Contatos.Remove(contato);
             _bancoContext.SaveChanges();
 
@@ -38,6 +40,7 @@ namespace SistemaDeContatos.Repositorio
             if(_contato != null)
             {
                 ContatoModel contato = _bancoContext.Contatos.Single(x => x.id == id);
+                if (contato == null) throw new System.Exception("Houve um erro ao apagar contato!");
                 contato.nome = _contato.nome;
                 contato.email = _contato.email;
                 contato.celular = _contato.celular;

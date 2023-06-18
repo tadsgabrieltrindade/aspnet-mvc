@@ -37,8 +37,24 @@ namespace SistemaDeContatos.Controllers
         [HttpPost]
         public IActionResult EditarConfirmacao(ContatoModel contato, int id)
         {
-            _repositorio.atualizarContato(contato, id);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _repositorio.atualizarContato(contato, id);
+                    TempData["MensagemSucesso"] = "Contato editado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                return View("Editar", contato);
+
+
+            }
+            catch (System.Exception err)
+            {
+
+                TempData["MensagemErro"] = $"Ops, não conseguimos editar seu contato. Tente novamente! \nDetalhes do erro: {err.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         public IActionResult ApagarConfirmacao(int id)
@@ -47,19 +63,46 @@ namespace SistemaDeContatos.Controllers
             contato = _repositorio.BuscarPorId(id);
             return View(contato);
         }
-
+         
 
         public IActionResult Apagar(int id)
         {
-            _repositorio.apagarContatoPorId(id);
-            return RedirectToAction("Index");
+            try
+            {
+                _repositorio.apagarContatoPorId(id);
+                TempData["MensagemSucesso"] = "Contato excluído com sucesso!";
+                return RedirectToAction("Index");
+            }
+            catch(System.Exception err)
+            {
+                TempData["MensagemErro"] = $"Ops! Erro ao excluir contato. Por favor, tente novamente! \nDetalhe do erro: {err.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public IActionResult Criar(ContatoModel contato)
         {
-            _repositorio.Adicionar(contato);
-            return RedirectToAction("Index");
+            try
+            {
+                //O ModelState.IsValid serve para verificar se todos os dados estão conforme requerido. 
+                if (ModelState.IsValid)
+                {
+                    _repositorio.Adicionar(contato);
+                    TempData["MensagemSucesso"] = "Contato cadastrado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+
+                return View(contato);
+
+            }
+            catch (System.Exception err)
+            {
+
+                TempData["MensagemErro"] = $"Ops, não conseguimos cadastrar seu contato. Tente novamente! \nDetalhes do erro: {err.Message}";
+                return RedirectToAction("Index");
+
+            }
         }
     }
 }

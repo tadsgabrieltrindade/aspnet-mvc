@@ -1,8 +1,9 @@
-﻿@model ContatoModel
+﻿@using System.Text.RegularExpressions;
+@model ContatoModel
 @{
     ViewData["Title"] = "Confirmação de exclusão";
 }
-
+  
 
 
 <div class="text-center container-fluid">
@@ -16,9 +17,9 @@
         <ol class="list-group">
             <li class="list-group-item"><strong>Nome</strong>: @Model.nome</li>
             <li class="list-group-item"><strong>E-mail</strong>: @Model.email</li>
-            <li class="list-group-item"><strong>Celular</strong>: @Model.celular</li>
+            <li class="list-group-item"><strong>Celular</strong>: @Regex.Replace(Model.celular, @"(\d{2})(\d{5})(\d{4})", "($1) $2-$3")</li>
     </ol>
-   </div>
+   </div>  
 
 
     <br />
