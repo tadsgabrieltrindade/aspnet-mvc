@@ -1,0 +1,49 @@
+﻿@using SistemaDeContatos.Enums;
+@model UsuarioModel
+
+@{
+    ViewData["Title"] = $"Editar Usuário - {Model.Nome}";
+}
+
+
+<div class="container-fluid px-5">
+    <h1 class="display-5 text-center">Editar Usuário - @Model.Nome</h1>
+
+    <form asp-controller="Usuario" asp-action="Editar" method="post">
+        
+        @*Identifica que o id desse usuário e que o método recebe lá na controller *@
+        <input type="hidden" asp-for="id" />
+
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" asp-for=Nome value="@Model.Nome">
+            @Html.ValidationMessageFor(x => x.Nome)
+        </div>
+        <div class="mb-3">
+            <label for="Login" class="form-label">Login</label>
+            <input type="text" class="form-control" id="Login" asp-for=Login value="@Model.Login">
+            @Html.ValidationMessageFor(x => x.Login)
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" asp-for="Email" value="@Model.Email">
+            @Html.ValidationMessageFor(x => x.Email)
+        </div>
+
+        <div class="mb-3">
+            <label for="Perfil" class="form-label">Perfil do usuário</label>
+            <select asp-for="Perfil" class="form-select" aria-label="Perfil">
+                <option value="">Selecione</option>
+                <option value="@PerfilEnum.Admin">Administrador</option>
+                <option value="@PerfilEnum.Padrao">Padrão</option>
+            </select>
+            @Html.ValidationMessageFor(x => x.Perfil)
+        </div>
+        
+        <div class="my-4">
+            <button type="submit" class="btn btn-primary btn-block my-2 ">Confirmar edição</button>
+            <a class="btn btn-success text-light btn-block my-2" role="button"  asp-controller="Usuario" asp-action="Index">Lista de usuários</a>
+        </div>
+    </form>
+
+</div>

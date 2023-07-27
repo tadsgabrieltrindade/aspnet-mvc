@@ -1,0 +1,34 @@
+﻿@using System.Text.RegularExpressions;
+@using SistemaDeContatos.Enums;
+@model UsuarioModel
+@{
+    ViewData["Title"] = $"Confirmação de exclusão - {Model.Nome}";
+}
+  
+
+
+<div class="text-center container-fluid">
+    <h2 class="display-4">Deseja realmente excluir o usuário?</h2>
+
+    <h4>Informações do usuario:</h4>
+   <div class="text-justify m-auto">
+        <ol class="list-group">
+            <li class="list-group-item"><strong>Nome</strong>: @Model.Nome</li>
+            <li class="list-group-item"><strong>Login</strong>: @Model.Login</li>
+            <li class="list-group-item"><strong>Tipo Login</strong>: @((Model.Perfil == PerfilEnum.Admin) ? "Administrador" : "Padrão")</li>
+            <li class="list-group-item"><strong>E-mail</strong>: @Model.Email</li>
+    </ol>
+   </div>  
+
+
+    <br />
+
+    <a class="btn btn-danger  btn-md btn-block" role="button" asp-route-id="@Model.id" asp-controller="Usuario" asp-action="Apagar">Sim, desejo excluir!</a>
+    <a class="btn btn-success btn-md btn-block" role="button" asp-controller="Usuario" asp-action="Index">Cancelar, não desejo excluir!</a>
+
+</div>
+
+
+
+
+

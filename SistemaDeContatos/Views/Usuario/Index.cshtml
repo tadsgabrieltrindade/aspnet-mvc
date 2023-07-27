@@ -1,0 +1,76 @@
+﻿
+
+@model List<UsuarioModel>
+@{
+    ViewData["Title"] = "Lista de Usuários";
+}
+
+
+<div class="text-center">
+
+
+    <h1 class="display-4">Listagem de Usuários</h1>
+
+    @if(TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+   
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end my-4">
+        <a class="btn btn-success text-light" role="button" asp-controller="Usuario" asp-action="Criar">Novo Usuário</a>
+    </div>
+
+    <table class="table table-striped" id="table-usuarios">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Login</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Perfil</th>
+                <th scope="col">Data de cadastro</th>
+                <th scope="col">Última alteração</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @if (Model != null && Model.Any())
+            {
+                @using SistemaDeContatos.Util;
+                @foreach (var usuarioModel in Model)
+                {
+                    <tr>
+                        <th>@usuarioModel.id</th>
+                        <th>@usuarioModel.Nome</th>
+                        <th>@usuarioModel.Login</th>
+                        <th>@usuarioModel.Email</th>
+                        <th>@(usuarioModel.Perfil == SistemaDeContatos.Enums.PerfilEnum.Admin ? "Administrador" : "Padrão")</th>
+                        <th>@usuarioModel.DataCadastro</th>
+                        <th>@usuarioModel.DataAlteracao</th>
+
+
+                        <th>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary text-light" asp-route-id="@usuarioModel.id" asp-controller="Usuario" asp-action="Editar">Editar</a>
+                                <a role="button" class="btn btn-danger text-light" asp-route-id="@usuarioModel.id" asp-controller="Usuario" asp-action="ApagarConfirmacao">Apagar</a>
+                            </div>
+                        </th>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

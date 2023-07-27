@@ -26,5 +26,7 @@ namespace SistemaDeContatos.Data
            Permite acessar e manipular os registros da tabela por meio do contexto do banco de dados.
         */
         public DbSet<ContatoModel> Contatos { get; set; }
+
+        public DbSet<UsuarioModel> Usuarios { get; set; }
     }
 }

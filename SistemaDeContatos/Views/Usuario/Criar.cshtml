@@ -1,0 +1,63 @@
+﻿@using SistemaDeContatos.Enums;
+@model UsuarioModel
+
+@{
+    ViewData["Title"] = "Cadastrar Usuário";
+}
+
+ 
+<div class="container-fluid px-5">
+    <h1 class="display-5 text-center">Cadastrar Novo Usuário</h1>
+
+    <form asp-controller="Usuario" asp-action="Criar" method="post">
+        <div class="mb-3">
+            <label for="Nome" class="form-label">Nome</label>
+            <input type="text" asp-for=Nome class="form-control" id="Nome" placeholder="Digite seu nome">
+            @*Esse validationMessageFor é responsável por mostra as mensagens que foram definidas na model de contatos para a validação*@
+            @Html.ValidationMessageFor(x => x.Nome)
+        </div>
+
+        <div class="mb-3">
+            <label for="Login" class="form-label">Login</label>
+            <input type="text" asp-for=Login class="form-control" id="Login" placeholder="Digite seu login">
+            @*Esse validationMessageFor é responsável por mostra as mensagens que foram definidas na model de contatos para a validação*@
+            @Html.ValidationMessageFor(x => x.Login)
+        </div>
+
+        <div class="mb-3">
+            <label for="Email" class="form-label">E-mail</label>
+            <input type="email" asp-for=Email class="form-control" id="Email" placeholder="Digite seu e-mail">
+            @*Esse validationMessageFor é responsável por mostra as mensagens que foram definidas na model de contatos para a validação*@
+            @Html.ValidationMessageFor(x => x.Email)
+        </div>
+
+        <div class="mb-3">
+            <label for="Senha" class="form-label">Senha</label>
+            <input type="password" asp-for=Senha class="form-control" id="Senha" placeholder="Digite sua senha">
+            @*Esse validationMessageFor é responsável por mostra as mensagens que foram definidas na model de contatos para a validação*@
+            @Html.ValidationMessageFor(x => x.Senha)
+        </div>
+
+        @*<div class="mb-3">
+            <label for="confirmar-senha" class="form-label">Confirmar Senha</label>
+            <input type="password" asp-for=confirmar-senha class="form-control" id="confirmar-senha" placeholder="Digite novamente sua senha">
+           
+        </div>*@
+
+        <div class="mb-3">
+            <label for="Perfil" class="form-label">Perfil do usuário</label>
+            <select asp-for="Perfil" class="form-select" aria-label="Perfil">
+                <option value="">Selecione</option>
+               <option value="@PerfilEnum.Admin">Administrador</option>
+               <option value="@PerfilEnum.Padrao">Padrão</option>
+            </select>
+            @Html.ValidationMessageFor(x => x.Perfil)
+        </div>
+
+        <div class="my-4">
+            <button type="submit" class="btn btn-primary btn-block my-2 ">Cadastrar</button>
+            <a class="btn btn-success text-light btn-block my-2" role="button" asp-controller="Usuario" asp-action="Index">Lista de Usuários</a>
+        </div>
+    </form>
+
+</div>
