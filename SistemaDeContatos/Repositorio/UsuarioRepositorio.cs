@@ -64,19 +64,18 @@ namespace SistemaDeContatos.Repositorio
             return  _bancoContext.Usuarios.ToList();
         }
 
-        public bool LoginUsuario(string login, string senha)
+        public UsuarioModel BuscarPorLogin(LoginModel _login)
         {
-            if (login != null && senha != null)
-            {
-                var resultado = _bancoContext.Usuarios
-                    .SingleOrDefault(x => x.Login.ToUpper() == login.ToUpper() && x.Senha == senha);
+            UsuarioModel usuario = null;
 
-                if (resultado != null)
-                {
-                    return true;
-                }
+            if (_login.Login != null)
+            {
+                 usuario = _bancoContext.Usuarios
+                    .SingleOrDefault(x => x.Login.ToUpper() == _login.Login.ToUpper());
             }
-            return false;
+
+            return usuario;
         }
+
     }
 }

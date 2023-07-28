@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SistemaDeContatos.Helper;
 using SistemaDeContatos.Models;
 using SistemaDeContatos.Repositorio;
 
@@ -8,17 +9,30 @@ namespace SistemaDeContatos.Controllers
     {
 
         private readonly IUsuarioRepositorio _repositorio;
+        
+        //Utilização da sessão
+        private readonly ISessao _sessao;
 
 
-        public LoginController(IUsuarioRepositorio repositorio)
+        public LoginController(IUsuarioRepositorio repositorio, ISessao sessao)
         {
             _repositorio = repositorio;
+            _sessao = sessao;
         }
 
 
         public IActionResult Index()
         {
+            //Se o usuário já estiver logado, a aplicação deve redirecionar para Home
+            if(_sessao.BuscarSessaoDoUsuario() != null) return RedirectToAction("Index", "Home");
             return View();
+        }
+
+        public IActionResult Sair()
+        {
+            _sessao.RemoverSessaoDoUsuario();
+
+            return RedirectToAction("Index", "Login");
         }
 
 
@@ -30,9 +44,14 @@ namespace SistemaDeContatos.Controllers
                
                 if (ModelState.IsValid)
                 {
-                    if(_repositorio.LoginUsuario(_login.Login, _login.Senha))
+                    UsuarioModel usuario = _repositorio.BuscarPorLogin(_login);
+
+                    if (usuario != null)
                     {
-                        return RedirectToAction("Index", "Home");
+                       if(_login.verificarSenha(usuario, _login.Senha)){
+                            _sessao.CriarSessaoDoUsuario(usuario);
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
 
                     TempData["MensagemErro"] = $"Erro ao fazer login, verifique suas credenciais!";

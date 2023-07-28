@@ -12,9 +12,8 @@ namespace SistemaDeContatos.Repositorio
         UsuarioModel BuscarPorId(int id);
 
         void apagarUsuarioPorId(int id);
-
+        UsuarioModel BuscarPorLogin(LoginModel _login);
         void atualizarUsuario(UsuarioModel usuario);
 
-        bool LoginUsuario(string login, string senha);
     }
 }

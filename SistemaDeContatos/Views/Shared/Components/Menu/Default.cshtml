@@ -1,0 +1,29 @@
+﻿@model UsuarioModel
+
+
+    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Sistema de Controle de Contatos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
+           
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contatos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuários</a>
+            </li>
+        <li class="nav-item">
+           
+        </li>
+
+        @*<li class="nav-item me-5 px-4 position-absolute top-50 end-0 translate-middle-y">*@
+        <li class="nav-item d-flex me-5 px-4 justify-content-end position-absolute top-50 end-0 translate-middle-y">
+                <a class="nav-link text-dark "> Olá, @Model.Nome!</a>
+                <a type="button" class="btn btn-danger " asp-area="" asp-controller="Login" asp-action="Sair">Sair</a>
+            </li>
+
+        </ul>
+    </div>
