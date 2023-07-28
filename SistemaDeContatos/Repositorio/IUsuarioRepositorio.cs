@@ -5,7 +5,7 @@ namespace SistemaDeContatos.Repositorio
 {
     public interface IUsuarioRepositorio
     {
-        UsuarioModel Adicionar(UsuarioModel contato);
+        UsuarioModel Adicionar(UsuarioModel usuario);
 
         List<UsuarioModel> BuscarTodosUsuarios();
 
@@ -14,5 +14,7 @@ namespace SistemaDeContatos.Repositorio
         void apagarUsuarioPorId(int id);
 
         void atualizarUsuario(UsuarioModel usuario);
+
+        bool LoginUsuario(string login, string senha);
     }
 }

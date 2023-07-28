@@ -1,0 +1,74 @@
+﻿@*O objetivo desta view é retornar a página de login do sistema. Para isso, é necessário importar o _LayoutDeslogado.cshtml*@
+@model LoginModel
+
+@{
+    Layout = "_LayoutDeslogada";
+    ViewData["Title"] = "Login";
+}
+
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemSucesso"]
+    </div>
+}
+@if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["MensagemErro"]
+    </div>
+}
+
+<div class="container mt-5">
+    
+
+
+<form asp-controller="Login" asp-action="Entrar" method="post" >
+      <div class="form-group">
+        <label for="exampleInputEmail1">Login</label>
+        <input asp-for="Login" type="text" class="form-control" id="login" placeholder="Digite seu login">
+        @Html.ValidationMessageFor(x => x.Login)
+      </div>
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input asp-for="Senha" type="password" class="form-control" id="senha" placeholder="Digite sua senha">
+        @Html.ValidationMessageFor(x => x.Senha)
+      </div>
+        <button type="submit" class="btn btn-outline-primary btn-block">Entrar</button>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#cadastrarMensagem">
+            Não tenho login
+        </button>
+
+</form>
+
+
+
+
+
+<!-- Modal -->
+    <div class="modal fade" id="cadastrarMensagem" tabindex="-1" role="dialog" aria-labelledby="cadastrarMensagem" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+                    <h5 class="modal-title" id="cadastrarMensagem">Novo login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Entre em contato com o administrador da sua área e solicite o acesso.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+
