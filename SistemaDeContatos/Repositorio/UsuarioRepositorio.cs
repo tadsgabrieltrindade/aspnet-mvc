@@ -20,6 +20,7 @@ namespace SistemaDeContatos.Repositorio
         public UsuarioModel Adicionar(UsuarioModel usuario)
         {
             //Gravar no banco de dados
+            usuario.CriptografarSenha();
             _bancoContext.Usuarios.Add(usuario);
             _bancoContext.SaveChanges();
             return usuario;

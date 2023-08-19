@@ -12,12 +12,12 @@
             <li class="nav-item">
                 <a class="nav-link text-dark" asp-area="" asp-controller="Contato" asp-action="Index">Contatos</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuários</a>
-            </li>
-        <li class="nav-item">
-           
-        </li>
+          
+            @if(Model.Perfil == SistemaDeContatos.Enums.PerfilEnum.Admin){
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-area="" asp-controller="Usuario" asp-action="Index">Usuários</a>
+                </li>
+            }
 
         @*<li class="nav-item me-5 px-4 position-absolute top-50 end-0 translate-middle-y">*@
         <li class="nav-item d-flex me-5 px-4 justify-content-end position-absolute top-50 end-0 translate-middle-y">

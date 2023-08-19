@@ -1,4 +1,5 @@
 ﻿using SistemaDeContatos.Enums;
+using SistemaDeContatos.Helper.Criptografia;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -28,6 +29,11 @@ namespace SistemaDeContatos.Models
         {
             this.DataCadastro = DateTime.Now;
             this.DataAlteracao = DateTime.Now;
+        }
+
+        public void CriptografarSenha()
+        {
+            Senha = Senha.GerarHash();
         }
     }
 }

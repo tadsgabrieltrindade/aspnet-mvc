@@ -1,4 +1,5 @@
 ﻿using SistemaDeContatos.Enums;
+using SistemaDeContatos.Helper.Criptografia;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -16,7 +17,7 @@ namespace SistemaDeContatos.Models
 
         public bool verificarSenha(UsuarioModel usuario, string senha)
         {
-            if(usuario.Senha == senha)
+            if(usuario.Senha == senha.GerarHash())
             {
                 return true;
             }

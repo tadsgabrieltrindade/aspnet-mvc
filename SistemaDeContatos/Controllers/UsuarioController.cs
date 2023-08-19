@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SistemaDeContatos.Enums;
+using SistemaDeContatos.Filters;
 using SistemaDeContatos.Models;
 using SistemaDeContatos.Repositorio;
 using System;
@@ -7,6 +8,8 @@ using System.Collections.Generic;
 
 namespace SistemaDeContatos.Controllers
 {
+    [PaginaParaUsuarioLogado]
+    [PaginaPermitidaParaUsuarioAdminstrador]
     public class UsuarioController : Controller
     {
 
